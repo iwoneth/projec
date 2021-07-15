@@ -1,0 +1,10 @@
+<div class="confirmation">
+    <fieldset class=" confirmation-field">
+        <div class="confirmation-content">
+            <h2 class=" confirmation-title">Algo correu mal!</h2>
+            <p class="confirmation-text">Ocorreu um erro... <a id="less" class="read" onclick="showMore()">Ver mais</a></p>
+            <p id="more"><?= $errorOperation ?> <a class="read"  onclick="showLess()">. Ver menos</a> </p>
+            <a href="<?php echo $GLOBALS['referer']; ?>"><button>Voltar à Página Inicial</button></a>
+        </div>        
+    </fieldset>
+</div>

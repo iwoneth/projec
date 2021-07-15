@@ -1,0 +1,49 @@
+<?php
+?>
+
+  <legend class="form-legend form-item" id="newProd"><i class="fas fa-box form-legend-icon"></i></legend>
+            
+            <div id="newProd" class="form-item">
+              <h2 class="form-title">ADICIONAR NOVO PRODUTO REGULAMENTADO</h2>
+                <form method="post" class="form-content">
+
+                    <input type="text" name="nomProd" placeholder="Nome do produto" class="form-input" required="">
+
+                    <input type="Number" name="custProdNI" placeholder="Custo de produção" class="form-input" required="">
+
+                      <label>Estado</label>
+                    <select name="estado" class="form-select" required="">
+
+                        <option value="" selected="" disabled=""> Bom</option>
+                        <?php
+                            /*$model=new ControllerCategoria();
+                            $data=$model->getAllCat();
+                            foreach($data as $d){
+                        */?>
+                        <option value="" selected="" disabled=""> Regular</option>
+                        <?php #echo $d[0];?>"><?php #echo $d[1];?>
+
+                        <option value="" selected="" disabled=""> Ruim</option>
+                        <?php #echo $d[0];?>"><?php #echo $d[1];?>
+                        
+                    </select>
+                    <input type="Number" name="QtMaxPes" placeholder="Quantidade de produto por Pessoa" class="form-input" required="">
+                    <label>Nível de Subsidio</label>
+                    <select name="nivel" class="form-select" required="">
+
+                        <option value="" selected="" disabled=""> 0</option>
+                        <?php
+                            /*$model=new ControllerCategoria();
+                            $data=$model->getAllCat();
+                            foreach($data as $d){
+                        */?>
+                        <option value="" selected="" disabled=""> 1</option>
+                        <?php #echo $d[0];?>"><?php #echo $d[1];?><
+                        
+                    </select>
+
+                    <button type="reset" class="form-button button-secondary"><i style="font-size:20px"class="fad fa-eraser form-legend-icon"></i>Limpar</button>
+                    <button type="submit" name="addProd" class="form-button button-primary"><i style="font-size:20px"class="fad fa-box-check form-legend-icon"></i>Adicionar Produto</button>
+                </form>
+            </div>
+                    

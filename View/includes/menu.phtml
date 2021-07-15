@@ -1,0 +1,57 @@
+<div class="page">
+    <div class="menu_conteiner" id="hamb_conteiner">
+        <div class="user_info">
+            <div class="conteiner_photo"><span><i class="fas fa-user-cog"></i></span></div>
+            <div class="infos_user">
+            <?php
+                if($_SESSION['access']=='prof')
+                    $tipoAux="Prof. ".$_SESSION['nome'];
+                else
+                    $tipoAux="Adm. ".$_SESSION['nome'];
+            ?>
+            <h1><?php echo $tipoAux; ?></h1>
+                <a href="index.php/log/logOut">Terminar Sessão</a>
+            </div>
+        </div>
+
+        <div class="menu_content">
+            <ul class="lista_principal">
+                <a>
+                    <li><i class="fas fa-chalkboard-teacher"></i>
+                        <p>Gerir Cadeiras</p>
+                    </li>
+                </a>
+                <a>
+                    <li><i class="fas fa-graduation-cap"></i>
+                        <p>Dados da conta</p>
+                    </li>
+                </a>
+                <a>
+                    <li><i class="fas fa-building"></i>
+                        <p>Definicões</p>
+                    </li>
+                </a>
+            </ul>
+        </div>
+
+    </div>
+    <div class="header-top">
+        <div class="header-top-left">
+        <span class="menu_hamb" id="menu_hamb" onclick="open_menu_hamb()"><i class="fas fa-bars"></i></span>
+        </div>
+        <div class="header-top-right">
+            <a href="index.php/<?=$_SESSION['access']?>/home" class="home-icon"><i class="fas fa-home"></i></a>
+            <!--<span class="notificacao" id="notificacao" ><i class="fas fa-bell"></i></span>-->
+            <span class="disabled" id="notificacao"><i class="fas fa-bell"></i></span>
+            <div class="notificacoes_ul">
+                <ul>
+                    <li>List item<b class="hora_notificacao">há 3 horas</b></li>
+                    <li>List item<b class="hora_notificacao">há 3 horas</b></li>
+                    <li>List item<b class="hora_notificacao">há 3 horas</b></li>
+                    <li>List item<b class="hora_notificacao">há 3 horas</b></li>
+                </ul>
+                <div class="ver_notificacoes"><a href="index.php/main/notifications">Ver todas as notificações</a></div>
+            </div>
+            <a href="index.php/log/logOut"><span class="terminar_sec"><i class="fas fa-power-off"></i></span></a>
+        </div>
+    </div>

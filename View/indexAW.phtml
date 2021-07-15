@@ -1,0 +1,222 @@
+<?php
+
+?>
+<div class="body">
+    <div class="form">
+        <fieldset class="form-field">
+            <div class="form-close" >
+                <i  onclick="displayOff()" class="fas fa-times"></i>
+            </div> 
+            <legend class="form-legend form-item" id="newProd"><i class="fas fa-box form-legend-icon"></i></legend>
+            
+            <div id="newProd" class="form-item">
+              <h2 class="form-title">ADICIONAR NOVO PRODUTO </h2>
+                <form method="post" class="form-content">
+
+                    <input type="text" name="nomProd" placeholder="Nome do produto" class="form-input" required="">
+                    <input type="number" name="custp"placeholder="Custo de produção ou importação" class="form-input" required="" >
+                      
+                    <label>Estado</label>
+                    <select name="estado" class="form-select" required="" id="estado">
+                        <option value ="-1" disabled=  "true" selected>Opções do estado</option>
+                        <option value="1" > Bom</option>
+                        
+                        <option value="0,5"> Regular</option>
+                        <option value="0,1"> Ruim</option>
+                    </select>
+
+                    <label>Tipologia</label>
+                    <select name="tipologia" class="form-select" required="" id="tipologia">
+                        <option value="-1" disabled="true" selected>Escolha uma tipologia</option>
+                        <option value="1">Produto Regulamentado</option>
+                        <option value="2">Produto Livre</option>
+                    </select>
+
+
+                    <input type="number" name="qtmaxpess"placeholder="Quantidade Máxima por Pessoa" class="regulamentado form-input" >
+                  
+                    <label>Nível Subsidio</label>
+                    <select name="nivel_sub" class="regulamentado form-input" required="" id="nivel_sub">
+                        <option value="-1" disabled="true" selected>Escolha o Nível de Subsidio</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+
+                    <input type="number" name="precAdic"placeholder="Preço Adicional" class="livre form-input" >
+
+                    <input type="number" name="QtddePro"placeholder="Quantidade de produto" class="form-input" required="" >
+
+                    <button type="reset" class="form-button button-secondary"><i style="font-size:20px"class="fad fa-eraser form-legend-icon"></i> Limpar</button>
+                   
+                    <button type="submit" name="addProd" class="form-button button-primary"><i style="font-size:20px"class="fad fa-box-check form-legend-icon"></i>Regitar Produto</button>
+                </form>
+            </div>
+
+            <div id="newPedido" class="form-item">
+
+                <h2 class="form-title">FAZER PEDIDO</h2>
+                     <form method="post" class="form-content">
+                             <!--<select name="vendaCat" class="form-select" required="">
+                            <option value="" selected="" disabled="">Selecione a categoria do produto</option>
+                            </select>-->
+                        <select name="vendaLiv" id="vendaLiv" class="form-select" required="" onchange="getPrice();">
+                            <option value="" selected="" disabled="">Selecione o nucleo</option>
+                            <option value=""></option>
+                       
+                        </select>
+                        <select name="vendaProd" id="vendaProd" class="form-select" required="" onchange="getPrice();">
+                            <option value="" selected="" disabled="">Selecione o produto</option>
+                      
+                    </select>
+                    <input type="number" name="QtddPro" placeholder="Qantidade do produto" class="form-input" required="">
+                    
+                    <button type="reset" class="form-button button-secondary"><i style="font-size:20px"class="fad fa-eraser form-legend-icon"></i>Limpar</button>
+                    <button type="submit" name="addVenda" class="form-button button-primary"><i style="font-size:20px"class="fad fa-cart-plus form-legend-icon"></i>Finalizar pedido</button>
+                     </form>
+            </div>
+
+               <legend class="form-legend form-item" id="newProdFree"><i class="fas fa-box form-legend-icon"></i></legend>
+            
+            <div id="ProdLivre" class="form-item">
+                <h2 class="form-title">ADICIONAR NOVO PRODUTO LIVRE</h2>
+                <form method="post" class="form-content">
+
+                    <input type="text" name="nomProd" placeholder="Nome do produto" class="form-input" required="">
+
+                    <input type="Number" name="custProdNI" placeholder="Custo de produção" class="form-input" required="">
+
+                    <select name="estado" class="form-select" required="">
+
+                        <option value="" selected="" disabled=""> Bom</option>
+                        <?php
+                            /*$model=new ControllerCategoria();
+                            $data=$model->getAllCat();
+                            foreach($data as $d){
+                        */?>
+                        <option value="" selected="" disabled=""> Regular</option>
+                        <?php #echo $d[0];?>"><?php #echo $d[1];?>
+
+                        <option value="" selected="" disabled=""> Ruim</option>
+                        <?php #echo $d[0];?>"><?php #echo $d[1];?>
+                        
+                    </select>
+
+
+                    <select name="qENouI" class="form-select" required="">
+
+                        <option value="" selected="" disabled=""> Nacional</option>
+                        <?php
+                            /*$model=new ControllerCategoria();
+                            $data=$model->getAllCat();
+                            foreach($data as $d){
+                        */?>
+                        <option value="" selected="" disabled=""> Impotado</option>
+                        <?php #echo $d[0];?>"><?php #echo $d[1];?><
+                        
+                     </select>
+                    <input type="number" name="prodStockAlerta" placeholder="Stock de alerta do produto" class="form-input-v2" required="">
+                    <input type="number" name="prodPu" placeholder="Preço unitário do produto" class="form-input" required="">
+                    <button type="reset" class="form-button button-secondary"><i style="font-size:20px"class="fad fa-eraser form-legend-icon"></i>Limpar</button>
+                    <button type="submit" name="addProd" class="form-button button-primary"><i style="font-size:20px"class="fad fa-box-check form-legend-icon"></i>Adicionar Produto</button>
+                   
+                </form>
+            </div>
+
+            <legend class="form-legend form-item" id="newFunc"><i class="fas fa-user-tie form-legend-icon"></i></legend>
+
+            <div id="newFunc" class="form-item">
+                <h2 class="form-title">ADICIONAR UM LIVRO</h2>
+                <form method="post" class="form-content">
+
+                    <input type="number" name="Numbnucleo" placeholder="Número do Nucleo" class="form-input" required="">
+                    <input type="text" name="Nameresp" placeholder="Nome do Responsável" class="form-input" required="">
+                    <input type="text" name="endernucleo" placeholder="Endereço do Nucleo" class="form-input" required="">
+        
+                      <select name="prodCat" class="form-select" required="">
+                        <option value="" selected="" disabled="">Associação a um plano de jaba</option>
+                        <?php
+                            /*$model=new ControllerCategoria();
+                            $data=$model->getAllCat();
+                            foreach($data as $d){
+                        */?><option value="<?php #echo $d[0];?>"><?php #echo $d[1];?></option>
+                        <?php #} ?>
+                    </select>
+                     <input type="number" name="NumMembNucl" placeholder="Número de menbros do Nucleo" class="form-input" required="">
+
+                    <button type="reset" class="form-button button-secondary"><i style="font-size:20px"class="fad fa-eraser form-legend-icon"></i>Limpar</button>
+                    <button type="submit" name="addLivro" class="form-button button-primary"><i style="font-size:20px"class="fas fa-user-plus form-legend-icon"></i>Adicionar Livro</button>                
+                </form>
+            </div>
+
+            <legend class="form-legend form-item" id="dashBoard"><i class="fas fa-badge-dollar form-legend-icon"></i></legend>
+
+            <div id="dashBoard" class="form-item">
+                <h2 class="form-title">DASHBOARD DE PEDIDOS</h2>
+                <form method="post" class="form-content">
+                <select id="dashCat" class="form-select-v2" required="" onchange="CalcTotalByCat();">
+                        <option value="" selected="" disabled="">Selecione a categoria do produto</option>
+                        <?php/*
+                            $model=new ControllerCategoria();
+                            $data=$model->getAllCat();
+                            foreach($data as $d){*/
+                        ?><option value="<?php #echo $d[0];?>"><?php #echo $d[1];?></option>
+                        <?php #} ?>
+                    </select>    
+                    <select id="dashProd"  class="form-select-v2"  onchange="CalcTotalByProd();">
+                        <option value="-1" selected="" disabled="">Selecione o produto</option>
+                    </select>
+                    <h2 class="form-title" id="dashValue" style="font-size:80pt;color: black;">0.0 KZ</h2>
+                    <button type="reset" class="form-button button-secondary" onclick="document.getElementById('dashValue').innerHTML = '0.0 KZ';$('#dashValue').css('color', '#000');">Limpar</button>                
+                </form>
+            </div>
+        </fieldset>
+    </div>
+
+
+
+    <main class="body">
+        <div class="corpo2" onclick="close_menu_hamb()">
+            <div class="folha_branca">
+                <div class="conteiner_full">
+                    <div class="item_quadrado" onclick="displayForm('newProd')">
+                        <div class="foto">
+                            <span class="item_icon"><i class="fad fa-box"></i></span>
+                        </div>
+                        <h1 class="titulo_item">Registra Produto</h1>
+                    </div>
+                    </div>
+
+                    <div class="item_quadrado" onclick="displayForm('newFunc')">
+                        <div class="foto">
+                            <span class="item_icon"><i class="fad fa-user-tie"></i></span>
+                        </div>
+                        <h1 class="titulo_item1">Registra Livro</h1>
+                    </div>
+
+                    <div class="item_quadrado" onclick="displayForm('newVenda')">
+                        <div class="foto">
+                            <span class="item_icon"><i class="fad fa-cart-arrow-down"></i></span>
+                        </div>
+                        <h1 class="titulo_item">Fazer<br> Pedido</h1>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<script>
+    function display($element){
+        console.log($element);
+        var lista = document.querySelectorAll('.menu-esq');
+        lista.forEach(elemento => displayNone(elemento));
+        
+        $element.style.display = 'block';
+
+    }
+    function displayNone($element){
+        $element.style.display='none';
+    }
+</script>
